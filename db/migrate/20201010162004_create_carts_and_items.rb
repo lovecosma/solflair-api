@@ -11,9 +11,10 @@ class CreateCartsAndItems < ActiveRecord::Migration[6.0]
         t.timestamps
       end
    
-      create_table :carts_items, id: false do |t|
-        t.belongs_to :cart
-        t.belongs_to :item
+      create_join_table :carts, :items do |t|
+        # t.index [:cart_id, :item_id]
+        # t.index [:item_id, :cart_id]
       end
+     
     end
 end

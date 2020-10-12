@@ -22,11 +22,9 @@ ActiveRecord::Schema.define(version: 3020_10_10_161355) do
     t.integer "user_id"
   end
 
-  create_table "carts_items", id: false, force: :cascade do |t|
-    t.bigint "cart_id"
-    t.bigint "item_id"
-    t.index ["cart_id"], name: "index_carts_items_on_cart_id"
-    t.index ["item_id"], name: "index_carts_items_on_item_id"
+  create_table "items_carts", id: false, force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "cart_id", null: false
   end
 
   create_table "items", force: :cascade do |t|

@@ -13,3 +13,7 @@ user = User.create(first_name: "Matt", last_name: "Will", email: "test@test.com"
 user2 = User.create(first_name: "Red", last_name: "Guy", email: "test@gmail.com", password: "123456789", password_confirmation: "123456789")
 cart = Cart.create(user_id: 1)
 cart2 = Cart.create(user_id: 2)
+
+
+cart.items << lapis << diamond
+cart2.items << tigers_eye

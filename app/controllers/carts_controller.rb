@@ -9,6 +9,7 @@ class CartsController < ApplicationController
 
   # GET /carts/1
   def show
+    render json: @cart, include: [:items]
   end
 
   # GET /carts/new
@@ -34,9 +35,9 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   def update
     if @cart.update(cart_params)
-      redirect_to @cart, notice: 'Cart was successfully updated.'
+      render json: @cart, include: [:items]
     else
-      render :edit
+      
     end
   end
 
@@ -54,6 +55,7 @@ class CartsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cart_params
-      params.fetch(:cart, {})
+      params.require(:cart).permit(:id, :total, :user_id, item_ids: [])
     end
+
 end
