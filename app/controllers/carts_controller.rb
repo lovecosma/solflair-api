@@ -41,6 +41,23 @@ class CartsController < ApplicationController
     end
   end
 
+#PATCH /carts/1/remove
+
+def remove
+  cart = Cart.find((params[:cart_id].to_i))
+  item = Item.find(params[:cart][:item_ids])
+  apearances = cart.items.collect do |i|
+    return i.name == item.name
+  end 
+  # cart.items.delete(item)
+  # cart.save!
+  # if cart.save
+  #   render json: cart, include: [:items]
+  # else
+
+  # end 
+end 
+
   # DELETE /carts/1
   def destroy
     @cart.destroy
