@@ -11,7 +11,5 @@ diamond = Item.create(name: "diamond", price: prices.sample)
 tigers_eye = Item.create(name: "Tiger's Eye", price: prices.sample)
 user = User.create(first_name: "Matt", last_name: "Will", email: "test@test.com", password: "12345678", password_confirmation: "12345678")
 user2 = User.create(first_name: "Red", last_name: "Guy", email: "test@gmail.com", password: "123456789", password_confirmation: "123456789")
-cart = Cart.create(user_id: 1)
-cart2 = Cart.create(user_id: 2)
-cart_item = CartItem.create(name: lapis.name, price: lapis.price, quantity: 1, cart_id: 1)
+cart_item = CartItem.create(name: lapis.name, price: lapis.price, quantity: 1, user_id: 1)
 

@@ -3,7 +3,8 @@ class CreateCartItems < ActiveRecord::Migration[6.0]
     create_table :cart_items do |t|
       t.string :name
       t.float :price
-      t.integer :cart_id
+      t.integer :quantity
+      t.integer :user_id
 
       t.timestamps
     end

@@ -48,6 +48,6 @@ class CartItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cart_item_params
-      params.require(:cart_item).permit(:name, :price, :cart_id, :quantity)
+      params.require(:cart_item).permit(:name, :price, :user_id, :quantity)
     end
 end
