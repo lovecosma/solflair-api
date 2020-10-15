@@ -25,8 +25,9 @@ class CartItemsController < ApplicationController
 
   # PATCH/PUT /cart_items/1
   def update
+    cart_items = CartItem.all
     if @cart_item.update(cart_item_params)
-      render json: @cart_item
+      render json: cart_items
     else
       render json: @cart_item.errors, status: :unprocessable_entity
     end
@@ -34,7 +35,9 @@ class CartItemsController < ApplicationController
 
   # DELETE /cart_items/1
   def destroy
+    cart_items = CartItem.all
     @cart_item.destroy
+    render json: cart_items
   end
 
   private
@@ -45,6 +48,6 @@ class CartItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cart_item_params
-      params.require(:cart_item).permit(:name, :price, :cart_id)
+      params.require(:cart_item).permit(:name, :price, :cart_id, :quantity)
     end
 end
