@@ -26,9 +26,8 @@ class CartItemsController < ApplicationController
 
   # PATCH/PUT /cart_items/1
   def update
-    cart_items = CartItem.all
     if @cart_item.update(cart_item_params)
-      render json: cart_items
+      render json: @user.cart_items
     else
       render json: @cart_item.errors, status: :unprocessable_entity
     end
@@ -36,7 +35,7 @@ class CartItemsController < ApplicationController
 
   # DELETE /cart_items/1
   def destroy
-    cart_items = CartItem.all
+    cart_items = @user.cart_items.all
     @cart_item.destroy
     render json: cart_items
   end
@@ -44,7 +43,8 @@ class CartItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart_item
-      @cart_item = CartItem.find(params[:id])
+      @user = User.find(params[:user_id]) 
+      @cart_item = @user.cart_items.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
