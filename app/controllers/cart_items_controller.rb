@@ -3,7 +3,8 @@ class CartItemsController < ApplicationController
 
   # GET /cart_items
   def index
-    @cart_items = CartItem.all
+    user = User.find(params[:user_id])  
+    @cart_items = user.cart_items.all
 
     render json: @cart_items
   end
