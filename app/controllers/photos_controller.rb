@@ -30,7 +30,6 @@ class PhotosController < ApplicationController
       end
 
     def update
-        binding.pry
         @item = Item.find(params["item_id"].to_i)
         if params[:file]
             # The data is a file upload coming from <input type="file" />
@@ -41,12 +40,15 @@ class PhotosController < ApplicationController
     end
 
     def create_photo
-        photo = Photo.create(params[:title])
+        new_photo = Photo.create(title: params[:title])
         if params[:file]
-        # The data is a file upload coming from <input type="file" />
-        @item.avatar.attach(params[:file])
-        # Generate a url for easy display on the front end 
-        photo = url_for(@item.avatar)
+            # The data is a file upload coming from <input type="file" />
+            new_photo.avatar.attach(params[:file])
+            # Generate a url for easy display on the front end 
+            photo = url_for(new_photo.avatar)
         end
+        if new_photo.update(url: photo)
+            render json: new_photo, status: :ok
+         end
     end 
 end
