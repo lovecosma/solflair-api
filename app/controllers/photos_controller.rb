@@ -27,4 +27,6 @@ class PhotosController < ApplicationController
           render json: @items, status: :ok
         end
       end
+
+    def 
 end
