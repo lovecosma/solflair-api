@@ -3,10 +3,10 @@ class PhotosController < ApplicationController
         @items = Item.all
         @item = Item.find(params["item_id"].to_i)
         if params[:file]
-          # The data is a file upload coming from <input type="file" />
-          @item.avatar.attach(params[:file])
-          # Generate a url for easy display on the front end 
-          photo = url_for(@item.avatar)
+        # The data is a file upload coming from <input type="file" />
+        @item.avatar.attach(params[:file])
+        # Generate a url for easy display on the front end 
+        photo = url_for(@item.avatar)
         end
         # elsif params[:camera]
         #   # The data is Base64 and coming from the camera.  
@@ -39,4 +39,14 @@ class PhotosController < ApplicationController
             photo = url_for(@item.avatar)
           end
     end
+
+    def create_photo
+        photo = Photo.create(params[:title])
+        if params[:file]
+        # The data is a file upload coming from <input type="file" />
+        @item.avatar.attach(params[:file])
+        # Generate a url for easy display on the front end 
+        photo = url_for(@item.avatar)
+        end
+    end 
 end
