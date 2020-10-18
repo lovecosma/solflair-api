@@ -5,11 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-prices = [29.99, 39.99, 49.99]
-lapis = Item.create(name: "lapis", price: prices.sample)
-diamond = Item.create(name: "diamond", price: prices.sample)
-tigers_eye = Item.create(name: "Tiger's Eye", price: prices.sample)
+# prices = [29.99, 39.99, 49.99]
+# lapis = Item.create(name: "lapis", price: prices.sample)
+# diamond = Item.create(name: "diamond", price: prices.sample)
+# tigers_eye = Item.create(name: "Tiger's Eye", price: prices.sample)
 user = User.create(first_name: "Jasmine", last_name: "Alexander", email: "solflair.jewelry@gmail.com", password: "Creampuff1!", password_confirmation: "Creampuff1!", admin: true)
 user2 = User.create(first_name: "Red", last_name: "Guy", email: "test@test.com", password: "12345678", password_confirmation: "12345678", admin: false)
-cart_item = CartItem.create(name: lapis.name, price: lapis.price, quantity: 1, user_id: 2)
 

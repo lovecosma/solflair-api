@@ -26,8 +26,9 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1
   def update
+    items = Item.all
     if @item.update(item_params)
-      render json: @item
+      render json: items
     else
       render json: @item.errors, status: :unprocessable_entity
     end
@@ -36,6 +37,8 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   def destroy
     @item.destroy
+    items = Item.all
+    render json: items
   end
 
   private
