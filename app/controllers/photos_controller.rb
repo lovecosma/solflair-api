@@ -23,10 +23,20 @@ class PhotosController < ApplicationController
         #   photo = photo_params[:photo]
         # end
           # Now save that url in the item
+          
         if @item.update(photo: photo)
           render json: @items, status: :ok
         end
       end
 
-    def 
+    def update
+        binding.pry
+        @item = Item.find(params["item_id"].to_i)
+        if params[:file]
+            # The data is a file upload coming from <input type="file" />
+            @item.avatar.attach(params[:file])
+            # Generate a url for easy display on the front end 
+            photo = url_for(@item.avatar)
+          end
+    end
 end
